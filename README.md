@@ -26,7 +26,36 @@ My Master's level project which is a functional self-contained network tool capa
 
 ## »│ Setup
 
+### » Software:
+```
+For successful operation the following files/folders are required:
+- CSniff.c (converted to executable)
+- packetLogs.db
+- emerging.rules
+```
+```
+The following system and software are required:
+- a POSIX shell
+- standard C compiler (c89 or later)
+- packet socket option enabled
+- autoconf
+- Libraries (libpcap-dev / ncurses-dev / libsqlite3-dev / openssl-dev)
+```
+
+### » Install:
+1. Clone the repository and run the following commands in the directory
+2. `autoreconf -i`
+3. `./configure`
+4. `make`
+
+
 ## »│ Operartion
+```
+sudo ./NetSniffer [optional flags 
+    -i [network interface (from ifconfig)] 
+    -f [BPF filter] 
+  ] 
+```
 
 <div align="center">
 --- [ 𝗖𝗥𝟯𝗔𝗧𝟬𝗥 ] // Designed By --- 
