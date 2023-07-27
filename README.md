@@ -22,9 +22,16 @@ My Master's level project which is a functional self-contained network tool capa
 > - 
 #### │ Storage:
 > - SQLite database is used
-> - 
+>
+
+```diff
+- THE PROJECT'S CURRENTLY LIMITED TO ARP AND ICMP DECODING, CONTRIBUTIONS TO DECODING WOULD BE APPRECIATED -
+```
 
 ## »│ Setup
+
+### » Hardware:
+Setup a listening device in a `bastion position` on a home network which is capable of intercepting traffic or use `port mirroring` with a switch to ascertain a copy of the network traffic flowing through.  
 
 ### » Software:
 ```
@@ -43,10 +50,10 @@ The following system and software are required:
 ```
 
 ### » Install:
-1. Clone the repository and run the following commands in the directory
-2. `autoreconf -i`
-3. `./configure`
-4. `make`
+> 1. Clone the repository and run the following commands in the directory
+> 2. `autoreconf -i`
+> 3. `./configure`
+> 4. `make`
 
 
 ## »│ Operartion
@@ -54,8 +61,15 @@ The following system and software are required:
 sudo ./NetSniffer [optional flags 
     -i [network interface (from ifconfig)] 
     -f [BPF filter] 
-  ] 
+  ]
 ```
+**Arrow keys** to move up and down across the records and use **q** to quit
+
+### » Features:
+- Live packet viewing *(similar to Wiresharks)*
+- Promiscuous comparison with BPF filters
+- Record Logging of IOC matches
+- 
 
 <div align="center">
 --- [ 𝗖𝗥𝟯𝗔𝗧𝟬𝗥 ] // Designed By --- 
