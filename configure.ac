@@ -4,7 +4,7 @@
 AC_PREREQ([2.71])
 AC_INIT([NetSniffer], [1.0], [bug-automake@gnu.org])
 AM_INIT_AUTOMAKE([foreign])
-AC_CONFIG_SRCDIR([CSniffv3.c])
+AC_CONFIG_SRCDIR([CSniff.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
