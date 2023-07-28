@@ -49,6 +49,15 @@ The following system and software are required:
 - Libraries (libpcap-dev / ncurses-dev / libsqlite3-dev / openssl-dev)
 ```
 
+| Terminal Emulator  | Tested |
+|--------|---------|
+| Konsole | ✔️ Passing |
+| GNU | ✔️ Passing  |
+| Alacrity | ✔️ Passing *(transparency effect problem)* |
+| XFCE | ✔️ Passing *(transparency effect problem)*  |
+| Windows Console | ✔️ Passing |
+
+
 ### » Install:
 > 1. Clone the repository and run the following commands in the directory
 > 2. `autoreconf -i`
@@ -72,7 +81,11 @@ sudo ./NetSniffer [optional flags
 - Live packet viewing *(similar to Wiresharks)*
 - Promiscuous pattern matching with BPF filters
 - Record Logging of IOC matches
-- 
+- Filtering of traffic capture by network interface and BPF expression
+- Responsive TUI to size changes
+- Easily scalable Snort rule-sets 
+
+![Demo CountPages alpha](README_Photos/showcase.gif)
 
 <div align="center">
 --- [ 𝗖𝗥𝟯𝗔𝗧𝟬𝗥 ] // Designed By --- 
