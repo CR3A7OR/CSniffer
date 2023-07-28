@@ -55,6 +55,9 @@ The following system and software are required:
 > 3. `./configure`
 > 4. `make`
 
+GNU Compiler:
+> gcc -o NetSniffer -g CSniffv3.c -lncurses -lpcap -pthread -lsqlite3 -lssl -lcrypto 
+
 
 ## »│ Operartion
 ```
