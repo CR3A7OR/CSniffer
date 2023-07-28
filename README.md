@@ -67,7 +67,7 @@ sudo ./NetSniffer [optional flags
 
 ### » Features:
 - Live packet viewing *(similar to Wiresharks)*
-- Promiscuous comparison with BPF filters
+- Promiscuous pattern matching with BPF filters
 - Record Logging of IOC matches
 - 
 
