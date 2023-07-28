@@ -10,19 +10,25 @@ My Master's level project which is a functional self-contained network tool capa
 
 | Linux  | Windows |
 |--------|---------|
-| ![GitHub Workflow Status](https://github.com/CR3A7OR/AutoSleuth/blob/main/README_Photos/Linux%20passing.svg) | ![GitHub Workflow Status](https://github.com/CR3A7OR/AutoSleuth/blob/main/README_Photos/Windows%20passing.svg) |
+| ![GitHub Workflow Status](https://github.com/CR3A7OR/AutoSleuth/blob/main/README_Photos/Linux%20passing.svg) | ![GitHub Workflow Status](https://img.shields.io/badge/Windows-failed-red) |
 
 
 ## »│ Technical Breakdown
 #### │ Capturing Traffic:
-> - Network traffic is captured
-> - 
+> - Network traffic is captured using the C `libpcap` which create a packet capture endpoint to receive traffic on, if successful the function returns a libpcap socket handle which relies on the use of a Linux PF_PACKET where the capture mechanism uses an internal ring buffer to write the packet to kernel memory with direct memory access
+> - A PF_PACKET socket clones the structure and skips the upper layer handling of the TCP/IP stack allowing for the capture of raw Ethernet frames being passed into applications via the socket interface
+> - The packet header and the packets content, are passed, and a character pointer is set to the beginning of the packet buffer which is then advanced to a particular protocol header by the size in bytes to allow for protocol distinguishment. The header is then mapped to a relevant header structure by casting the character pointer to a protocol specific structure, in this instance (ICMP or ARP)
 #### │ Signature Detection:
-> - Packets are decoded
-> - 
+> - The program will first convert each Snort rule into a `BPF filter` format and store it into an array called filter_expression, using the pcap compile function the for loop compiles each filter expression into a BPF rule
+> - Decoding each packet is a hard coded but systematic process of elimentation based on the contents of the packet, it takes advantage of a collection of preprocessor macros and type declarations, serving as the header or interface documentation for various network programming interfaces 
+> - The BPF filter expression is compiled and applied to a packet, it is executed using a kernel level virtual machine (VM) which iterates through a series of instructions, pushing and popping values from the stack as needed and then returns a non-zero value if the packet matches the filter, and zero if it does not. The eval function here algorithm simulates a generalised coverage of the acyclic control flow graph *(arp.src=XXX)*
 #### │ Storage:
-> - SQLite database is used
->
+> - `SQLite3` database is used for the project to record and store any IOC packets identified as a match with a BPF expression.  
+> - Packet information has been extracted and is done with a function that binds string values to placeholders in SQLite prepared statements for one final transaction. Inserting into the database is done once all packet information has been recovered from the packet and passed to the SQL Insert function a collaboration of SQL queries avoids deadlocks but maintains steady control of order as to perform simultaneous data presentation
+> - The retrieval of information is a simple template function that proceeds with an SQL statement selecting all columns from the table where the Label columns match the current record in the window. The population of the information box is invoked by the record window once a arrow key has been pressed, the label at the current record list index is passed for the search query. The retrieved values are stored locally and printed before being freed following best practice to be memory safe
+
+
+
 
 ```diff
 - THE PROJECT'S CURRENTLY LIMITED TO ARP AND ICMP DECODING, CONTRIBUTIONS TO DECODING WOULD BE APPRECIATED -
@@ -55,7 +61,7 @@ The following system and software are required:
 | GNU | ✔️ Passing  |
 | Alacrity | ✔️ Passing *(transparency effect problem)* |
 | XFCE | ✔️ Passing *(transparency effect problem)*  |
-| Windows Console | ✔️ Passing |
+| Windows Console *(WSL)* | ✔️ Passing |
 
 
 ### » Install:
