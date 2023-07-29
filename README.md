@@ -69,7 +69,7 @@ The following system and software are required:
 > 4. `make`
 
 GNU Compiler:
-> gcc -o NetSniffer -g CSniffv3.c -lncurses -lpcap -pthread -lsqlite3 -lssl -lcrypto 
+> gcc -o NetSniffer -g CSniff.c -lncurses -lpcap -pthread -lsqlite3 -lssl -lcrypto 
 
 
 ## »│ Operartion
